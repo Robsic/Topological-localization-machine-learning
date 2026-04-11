@@ -30,7 +30,11 @@ The system identifies the vehicle position in a map of predefined nodes:
 
 ## Author information and contact details
 Mateus Silva
+
 MSc Student in Electrical Engineering – UNIFEI
+
 Automation & Control Engineer
+
 Phone: +55 31 9 8818-8696
+
 E-mails: mateusfilipi22@unifei.edu.br | mateus.filipe.22@outlook.com
