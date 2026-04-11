@@ -1,0 +1,17 @@
+opencv-python
+geopy
+folium
+gpsd-py3
+numpy
+Pillow
+pandas
+tk
+tkhtmlview
+tkinterweb
+selenium
+imgkit
+requests
+webdriver-manager
+serial
+pyserial
+pynmea2

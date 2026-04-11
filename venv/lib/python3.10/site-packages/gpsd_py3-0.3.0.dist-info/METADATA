@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: gpsd-py3
+Version: 0.3.0
+Summary: Python 3 library for working with gpsd
+Home-page: https://github.com/MartijnBraam/gpsd-py3
+Author: Martijn Braam
+Author-email: martijn@brixit.nl
+License: MIT
+Keywords: gps,gpsd
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Operating System :: POSIX :: Linux
+Classifier: License :: OSI Approved :: MIT License
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: summary
