@@ -28,13 +28,8 @@ The system identifies the vehicle position in a map of predefined nodes:
 - Graphical interface: run [gui.py](gui.py).  
 - To reproduce experiments and train models, refer to the notebooks: [Model_training_1.ipynb](Model_training_1.ipynb) and [Model_training_2.ipynb](Model_training_2.ipynb). The model-building function is in [`build_model`](Final_Model.ipynb).
 
-## Author information and contact details
-Mateus Silva
-
-MSc Student in Electrical Engineering – UNIFEI
-
-Automation & Control Engineer
-
-Phone: +55 31 9 8818-8696
-
+Mateus Silva<br>
+MSc Student in Electrical Engineering – UNIFEI<br>
+Automation & Control Engineer<br>
+Phone: +55 31 9 8818-8696<br>
 E-mails: mateusfilipi22@unifei.edu.br | mateus.filipe.22@outlook.com
