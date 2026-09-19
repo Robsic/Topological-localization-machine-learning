@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from typing import Sequence
 
 from sklearn.metrics import (
@@ -63,10 +64,15 @@ def compute_pipeline_metrics(
     intersection_positions = [index for index, value in enumerate(expected_stage1) if value == 1]
     node_expected = [expected_nodes[index] for index in intersection_positions]
     node_predicted = [predicted_nodes[index] for index in intersection_positions]
+    def is_present(value: object) -> bool:
+        return value is not None and not (
+            isinstance(value, float) and math.isnan(value)
+        )
+
     valid_positions = [
         index
         for index, (expected, predicted) in enumerate(zip(node_expected, node_predicted))
-        if expected is not None and predicted is not None
+        if is_present(expected) and is_present(predicted)
     ]
     stage2 = None
     if valid_positions:
@@ -82,7 +88,12 @@ def compute_pipeline_metrics(
         if true_class == 0:
             end_to_end_correct += int(predicted_class == 0)
         else:
-            end_to_end_correct += int(predicted_class == 1 and predicted_node == true_node)
+            end_to_end_correct += int(
+                predicted_class == 1
+                and is_present(predicted_node)
+                and is_present(true_node)
+                and int(predicted_node) == int(true_node)
+            )
 
     return {
         "stage1": stage1,

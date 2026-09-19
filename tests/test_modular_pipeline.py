@@ -1,4 +1,5 @@
 import csv
+import math
 import tempfile
 import unittest
 from pathlib import Path
@@ -75,6 +76,10 @@ class MetricsTests(unittest.TestCase):
             [0, 1, 1], [0, 1, 1], [None, 3, 4], [None, 3, 2]
         )
         self.assertAlmostEqual(pipeline["end_to_end_accuracy"], 2 / 3)
+        with_missing_node = compute_pipeline_metrics(
+            [0, 1], [0, 0], [math.nan, 3], [math.nan, math.nan]
+        )
+        self.assertEqual(with_missing_node["end_to_end_accuracy"], 0.5)
 
 
 if __name__ == "__main__":

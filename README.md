@@ -34,6 +34,13 @@ The system identifies the vehicle position in a map of predefined nodes:
 - `src.models.factory` constructs the supported networks and safely loads checkpoints.
 - `src.training.metrics` reports per-stage and end-to-end pipeline metrics.
 
+## Reproducible evaluation
+Generate the permanent route-level splits with `python scripts/prepare_splits.py`.
+The files under `data/splits/` keep complete routes isolated between training,
+validation and testing. Evaluate the current checkpoints on the independent
+routes with `python scripts/evaluate_external.py`; results are written to
+`reports/baseline/` with per-route and end-to-end metrics.
+
 ## Author information and contact details
 Mateus Silva<br>
 MSc Student in Electrical Engineering – UNIFEI<br>

@@ -10,6 +10,10 @@ from src.models.factory import load_classifier, resolve_device
 class Prediction:
     predicted_label: str          # "straight" or "intersection"
     predicted_node_index: str     # "NA" or "0..15"
+    stage1_confidence: float = 0.0
+    intersection_probability: float = 0.0
+    stage2_confidence: float | None = None
+    predicted_node_top2: tuple[int, ...] = ()
 
 class RoutePredictor:
     """
@@ -32,12 +36,28 @@ class RoutePredictor:
         x = self.transform(frame_to_pil(frame)).unsqueeze(0).to(self.device)
         with torch.inference_mode():
             logits_1 = self.model_1(x)
-            pred_1 = int(torch.argmax(logits_1, dim=1).item())
+            probabilities_1 = torch.softmax(logits_1, dim=1)[0]
+            pred_1 = int(torch.argmax(probabilities_1).item())
+            stage1_confidence = float(probabilities_1[pred_1].item())
+            intersection_probability = float(probabilities_1[1].item())
 
             if pred_1 == 0:
-                return Prediction(predicted_label="straight", predicted_node_index="NA")
+                return Prediction(
+                    predicted_label="straight",
+                    predicted_node_index="NA",
+                    stage1_confidence=stage1_confidence,
+                    intersection_probability=intersection_probability,
+                )
 
             logits_2 = self.model_2(x)
-            pred_2 = int(torch.argmax(logits_2, dim=1).item())
-            return Prediction(predicted_label="intersection", predicted_node_index=str(pred_2))
-
+            probabilities_2 = torch.softmax(logits_2, dim=1)[0]
+            top2 = torch.topk(probabilities_2, k=2)
+            predicted_nodes = tuple(int(index) for index in top2.indices.tolist())
+            return Prediction(
+                predicted_label="intersection",
+                predicted_node_index=str(predicted_nodes[0]),
+                stage1_confidence=stage1_confidence,
+                intersection_probability=intersection_probability,
+                stage2_confidence=float(top2.values[0].item()),
+                predicted_node_top2=predicted_nodes,
+            )
