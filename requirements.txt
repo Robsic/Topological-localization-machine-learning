@@ -15,3 +15,6 @@ webdriver-manager
 serial
 pyserial
 pynmea2
+matplotlib
+scikit-learn
+nvidia-ml-py

@@ -1,0 +1,38 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter generated files
+.ipynb_checkpoints/
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+
+# Runtime output
+*.log
+verify_*.log
+map_static_*.png
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Local recovery files
+.local-backups/
