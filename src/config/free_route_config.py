@@ -37,7 +37,7 @@ class FreeRouteConfig:
     # Models
     model_1_path: str = "src/Models/mobilenet_best.pth"
     model_2_path: str = "src/Models/efficientnet_b0_best_16.pth"
-    device: str = "cpu"
+    device: str = "auto"
 
     # Labeling / motion
     heading_window_size: int = 5

@@ -12,7 +12,7 @@ The system identifies the vehicle position in a map of predefined nodes:
 ## Repository structure (summary)
 - main.py — application entry point.  
 - gui.py — demonstration interface.  
-- src/ — main package with modules: capture, gps, gui, Models, Navegation, tracker, utils.  
+- src/ — main package with modules for data, models, training metrics, capture, GPS, GUI, navigation and tracking.
 - src/Models/ — trained weights and modeling scripts.  
 - data/ — logs and images used for training/testing.  
 - maps/ — map configuration files.
@@ -27,6 +27,12 @@ The system identifies the vehicle position in a map of predefined nodes:
 ## Execution
 - Graphical interface: run [gui.py](gui.py).  
 - To reproduce experiments and train models, refer to the notebooks: [Model_training_1.ipynb](Model_training_1.ipynb) and [Model_training_2.ipynb](Model_training_2.ipynb). The model-building function is in [`build_model`](Final_Model.ipynb).
+
+## Reusable ML modules
+- `src.data.dataset` builds normalized manifests for stage 1 and stage 2 and provides a PyTorch dataset.
+- `src.data.transforms` contains the shared training and inference image transformations.
+- `src.models.factory` constructs the supported networks and safely loads checkpoints.
+- `src.training.metrics` reports per-stage and end-to-end pipeline metrics.
 
 ## Author information and contact details
 Mateus Silva<br>
