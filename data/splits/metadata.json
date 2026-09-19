@@ -1,0 +1,78 @@
+{
+  "strategy": "complete routes; no frame-level random split",
+  "external_evaluation_directory": "validation",
+  "splits": {
+    "train": {
+      "routes": [
+        "route_images_3"
+      ],
+      "samples_stage1": 1201,
+      "straight": 602,
+      "intersections": 599,
+      "nodes_present": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "validation": {
+      "routes": [
+        "route_images_1"
+      ],
+      "samples_stage1": 1032,
+      "straight": 578,
+      "intersections": 454,
+      "nodes_present": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "test": {
+      "routes": [
+        "route_images_2"
+      ],
+      "samples_stage1": 899,
+      "straight": 457,
+      "intersections": 442,
+      "nodes_present": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  }
+}

@@ -7,6 +7,7 @@ import numpy as np
 from PIL import Image
 
 from src.data.dataset import ImagePathDataset, load_classification_manifest, validate_manifest_images
+from src.data.splits import RouteSplit, create_route_splits
 from src.data.transforms import build_eval_transform, frame_to_pil
 from src.models.factory import build_classifier, resolve_device
 from src.training.metrics import compute_classification_metrics, compute_pipeline_metrics
@@ -41,6 +42,11 @@ class DatasetTests(unittest.TestCase):
         image, target = ImagePathDataset(manifest, build_eval_transform())[0]
         self.assertEqual(tuple(image.shape), (3, 256, 256))
         self.assertEqual(target, 0)
+
+    def test_route_split_rejects_route_leakage(self):
+        split = RouteSplit(("route_images_1",), ("route_images_1",), ("route_images_2",))
+        with self.assertRaises(ValueError):
+            create_route_splits(self.temporary_directory.name, split)
 
 
 class TransformTests(unittest.TestCase):
